@@ -1,0 +1,174 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>
+            Merci de répondre aux questions suivantes en faisant glisser le curseur sur la position qui correspond au
+            mieux à votre opinion :
+        </b>
+    </p>
+    <p>
+        {% if perso == "focal" %}
+            <table id="id_appreciate_focal_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appreciate_focal %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_identify_to_focal_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.identify_to_focal %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_appreciate_holi_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appreciate_holi %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_identify_to_holi_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.identify_to_holi %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+        {% elif perso == "holi" %}
+            <table id="id_appreciate_holi_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appreciate_holi %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_identify_to_holi_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.identify_to_holi %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_appreciate_focal_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appreciate_focal %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+            <table id="id_identify_to_focal_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.identify_to_focal %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+        {% endif %}
+    </p>
+    <p>
+
+        <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Questions suivantes</button>
+</div>
+
+
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        table, tr{
+            width: 100%;
+            border-width: "1";
+            text-align: center;
+        }
+        td.left_label{
+            font-size: 12px;
+            font-style: italic;
+            width: 20%;
+        }
+        td.slider{
+            font-weight:bold;
+            width: 35%;
+            text-align: center;
+        }
+        td.right_label{
+            font-size: 12px;
+            font-style: italic;
+            width: 20%;
+        }
+        td.title{
+            width: 30%;
+        }
+        td.content{
+            width: 50%;
+        }
+        td.button{
+            width: 20%;
+        }
+        span.highlighted{
+            font-weight: bold;
+            font-size: 21px;
+            color: red;
+        }
+    </style>
+{% endblock %}

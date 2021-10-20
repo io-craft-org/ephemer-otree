@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Résultats
+{% endblock %}
+
+{% block content %}
+	<meta http-equiv="refresh" content="15">
+
+<p>
+        {% if perso == "focal" %}
+            Sur la base des réponses fournies, vous faites partie du groupe <b>focalisé</b>.
+          <br>
+        D’une manière générale vous portez d'abord l'attention sur les détails.<br>
+           <br>
+
+
+        {% elif perso == "holi" %}
+            Sur la base des réponses fournies, vous faites partie du groupe <b>holistique</b>.
+          <br>
+        D’une manière générale vous portez d'abord votre attention sur une vue d'ensemble. <br>
+
+        {% endif %}
+
+    </p>
+<div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Continuer</button>
+</div>
+
+
+    </p>
+
+{% endblock %}
+
+{%block styles%}
+<style>
+.flotte {
+float:left;
+margin-right:20px;
+}
+    </style>
+{% endblock %}

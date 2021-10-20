@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Résultats
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>
+
+  {% if perso == "holi" %}
+Pour l’ensemble des réponses données dans le cadre de cette tâche, on observe, en moyenne, un
+pourcentage d’accord de 20,63% au sein de votre groupe (les holistiques). Votre niveau de consensus est donc faible et moins
+important que celui des focalisés.
+            {% elif perso == "focal" %}
+       Pour l’ensemble des réponses données dans le cadre de cette tâche, on observe, en moyenne, un
+pourcentage d’accord de 79,37% au sein de votre groupe (les focalisés). Votre niveau de consensus est donc élevé et plus
+important que celui du groupe des holistiques.
+ {% endif %}
+
+
+
+
+
+
+        <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Questionnaire spécifique</button>
+</div>
+
+
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+{% endblock %}

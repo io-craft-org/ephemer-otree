@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Complétion de mots
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <b>
+           Pour chacun des mots suivants, merci de choisir le terme qui, selon vous, lui est le plus associé par la plupart des gens :
+        </b>
+    </p>
+    <p>
+                {% formfields %}
+
+    <p>
+
+
+
+
+        <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Résultats</button>
+</div>
+
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+{% endblock %}

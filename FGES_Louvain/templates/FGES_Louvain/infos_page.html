@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<p>
+Vous êtes :
+{%formfield player.sexe%}
+
+Votre âge :
+{%formfield player.age%}
+</p>
+
+<div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Suite</button>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,99 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Grille de rémunération 2 / 2
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Merci de choisir la répartition qui vous convient pour cette seconde grille.
+
+         <br> <br>
+
+
+ <br>
+
+
+        <table>
+            <tr id="id_buttons_row">
+                <td></td>
+                <td><button name="matrix2_response" value="11_5" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="12_7" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="13_9" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="14_11" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="15_13" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="16_15" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="17_17" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="18_19" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="19_21" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="20_23" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="21_25" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="22_27" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix2_response" value="23_29" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+            </tr>
+            <tr id="id_mygroup_row">
+                <td height = "100">
+
+                           {% if perso == "focal" %}
+                        Un membre du groupe des Focalisés
+                    {% elif perso == "holi" %}
+                        Un membre du groupe des Holistiques
+                    {% endif %}
+                </td>
+                <td>11€</td>
+                <td>12€</td>
+                <td>13€</td>
+                <td>14€</td>
+                <td>15€</td>
+                <td>16€</td>
+                <td>17€</td>
+                <td>18€</td>
+                <td>19€</td>
+                <td>20€</td>
+                <td>21€</td>
+                <td>22€</td>
+                <td>23€</td>
+            </tr>
+            <tr id="id_othergroup_row">
+                <td height = "100">
+                   {% if perso == "focal" %}
+                        Un membre du groupe des Holistiques
+                    {% elif perso == "holi" %}
+                        Un membre du groupe des Focalisés
+                    {% endif %}
+
+
+                </td>
+                  <td>5€</td>
+                <td>7€</td>
+                <td>9€</td>
+                <td>11€</td>
+                <td>13€</td>
+                <td>15€</td>
+                <td>17€</td>
+                <td>19€</td>
+                <td>21€</td>
+                <td>23€</td>
+                <td>25€</td>
+                <td>27€</td>
+                <td>29€</td>
+            </tr>
+        </table>
+    </p>
+
+
+{% endblock %}
+
+
+
+{% block styles %}
+    <style type="text/css">
+        table, td, th {
+            border: 2px solid black;
+            text-align: center;
+            column-width: 150px;
+               }
+    </style>
+{% endblock %}

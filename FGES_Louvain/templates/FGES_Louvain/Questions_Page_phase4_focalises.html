@@ -1,0 +1,318 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Groupe des focalisés : questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <br>
+        <b>
+            <u>  Merci de répondre à ces différentes questions concernant votre groupe, les focalisés :</u>
+        </b>
+    <br>
+    </p>
+    <p>
+
+    <b>     1) Nous sommes un groupe :  </b>
+            <table id="id_nous_groupe_table">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.nous_groupe %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+ <b>     2) Nous sommes similaires : </b>
+            <table id="id_nous_similaires">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.nous_similaires %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+<b>     3) Nous voyons les choses de la même façon :</b>
+            <table id="id_vision_commune">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.vision_commune %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+ <b>     4) Selon moi, les membres de mon groupe, les focalisés, sont capables de travailler ensemble pour trouver les
+bonnes réponses à des tâches telles que celle que nous venons de réaliser.:</b>
+            <table id="id_travail_ensemble">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.travail_ensemble %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+ <b>     5) Suite à la tâche que nous venons de réaliser, si on nous propose un nouvel essai avec des mots nouveaux,
+les chances que mon groupe, les focalisés, réussisse correctement la tâche sont de : </b>
+            <table id="id_mots_nouveaux">
+                <tr>
+                    <td class="left_label">
+                        "0%"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.mots_nouveaux %}
+                    </td>
+                    <td class="right_label">
+                        "100%"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+<b>      6) Je pense que mon groupe, les focalisés, est capable de s’améliorer et de mieux réussir des tâches telles que
+celle que nous venons de réaliser. </b>
+            <table id="id_amelioration">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.amelioration %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+<b>      7) J'apprécie le groupe des focalisés</b>
+<table id="id_appreciate_self">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appreciate_self %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+<br>
+<b>         8) Je m'identifie au groupe des focalisés </b>
+<table id="id_identify_to_self">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout d'accord"
+                    </td>
+                    <td class="slider">
+                        {% formfield player.identify_to_self %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait d'accord"
+                    </td>
+                </tr>
+            </table>
+
+
+    <p>
+
+
+
+
+    </p>
+<br><br><br>
+    <p>
+  <b>
+        <br>
+      <u>Merci de répondre à ces différentes questions concernant votre groupe, les focalisés :</u>
+        </b>
+<br><br>
+          <b>     1) J'ai le sentiment d'appartenir à ce groupe :  </b>
+            <table id="id_appartenance">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.appartenance %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+
+          <b>     2) Je suis heureux de faire partie ce groupe :  </b>
+            <table id="id_heureux">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.heureux %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+
+          <b>     3) Je me vois comme faisant partie de ce groupe :  </b>
+            <table id="id_faisant_partie">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.faisant_partie %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+          <b>     4) Ce groupe est l'un des meilleurs :  </b>
+            <table id="id_meilleurs">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.meilleurs %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+          <b>     5) J'ai le sentiment d'être un membre de ce groupe :  </b>
+            <table id="id_sentiment_membre">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.sentiment_membre %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+          <b>     6) Je suis satisfait d'appartenir à ce groupe :  </b>
+            <table id="id_satisfait">
+                <tr>
+                    <td class="left_label">
+                        "Pas du tout "
+                    </td>
+                    <td class="slider">
+                        {% formfield player.satisfait %}
+                    </td>
+                    <td class="right_label">
+                        "Tout à fait "
+                    </td>
+                </tr>
+            </table>
+
+<br>
+
+
+
+
+
+
+
+        <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Questions suivantes</button>
+</div>
+
+    </p>
+
+
+
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        table, tr{
+            width: 100%;
+            border-width: "1";
+            text-align: center;
+        }
+        td.left_label{
+            font-size: 12px;
+            font-style: italic;
+            width: 20%;
+        }
+        td.slider{
+            font-style: italic;
+            width: 40%;
+            text-align: left;
+            font-size: 12px;
+        }
+        td.right_label{
+            font-size: 12px;
+            font-style: italic;
+            width: 20%;
+                text-align: left;
+        }
+        td.title{
+            width: 30%;
+        }
+        td.content{
+            width: 50%;
+        }
+        td.button{
+            width: 20%;
+        }
+        span.highlighted{
+            font-weight: bold;
+            font-size: 21px;
+            color: red;
+        }
+    </style>
+{% endblock %}

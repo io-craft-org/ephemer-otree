@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Complétion de mots
+{% endblock %}
+
+{% block content %}
+
+    <p>
+       Vous allez maintenant devoir réaliser une tâche de complétion de paires de mots. Nous allons vous présenter
+3 mots. Pour chacun d’entre eux, vous devrez trouver les termes auxquels ils sont le plus associés par la
+plupart des gens. En effet, sur la base de recherches précédentes réalisées sur plus de 1500 personnes, nous connaissons pour
+chacun des mots utilisés dans cette tâche, les associations généralement privilégiées par la population.
+<br><br>
+        Par exemple : Pour le mot « arbre » vous devriez choisir entre les propositions a). « bois », b). « forêt », c).
+« feuille », d). « branche ». Ici, la réponse majoritairement fournie par la population, et donc la bonne
+réponse, est la réponse C : « feuille ».
+<br><br>
+<strong>IMPORTANT : Même si vous répondez seul(e), cette tâche est une tâche de groupe. En effet, nous calculons
+le taux de réponses similaires à l’intérieur de chaque groupe et cherchons à savoir dans quel groupe
+(focalisé ou holistique), le degré d’accord, le consensus est le plus important. Dans ce cadre, pour chaque
+question, nous vous demandons également d’essayer d’estimer la réponse qui sera donnée par votre
+groupe.</strong>
+<br><br>
+
+        A partir de la page suivante, afin de vous familiariser avec l’exercice, les 2 prochains mots constituent un
+tour d’essai.
+    </p>
+<br><br>
+<div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Exemples</button>
+</div>
+{% endblock %}
+
+

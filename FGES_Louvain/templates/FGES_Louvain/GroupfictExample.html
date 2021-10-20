@@ -1,0 +1,59 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Complétion de mots : exemples
+{% endblock %}
+
+{% block content %}
+<br>
+    <p>
+        <b>
+           Pour chacun des mots suivants, merci de choisir le terme qui, selon vous, lui est le plus associé par la plupart des gens :
+        </b>
+    </p>
+    <p>
+<br>
+        <b><u>Premier exemple :</u></b>
+                {% formfield player.group_fict_example_1 %}
+
+<br>
+
+  {% if perso == "holi" %}
+        Selon moi, le pourcentage de membres de mon groupe (les holistiques) qui choisiront la même réponse que moi est :
+ {% elif perso == "focal" %}
+        Selon moi, le pourcentage de membres de mon groupe (les focalisés) qui choisiront la même réponse que moi est :
+ {% endif %}
+                        {% formfield player.slider_fictex_1 %}
+
+
+        <br><br>
+              <b><u>Second exemple :</u></b>
+   {% formfield player.group_fict_example_2 %}
+
+
+  {% if perso == "holi" %}
+        Selon moi, le pourcentage de membres de mon groupe (les holistiques) qui choisiront la même réponse que moi est :
+ {% elif perso == "focal" %}
+        Selon moi, le pourcentage de membres de mon groupe (les focalisés) qui choisiront la même réponse que moi est :
+ {% endif %}
+                        {% formfield player.slider_fictex_2 %}
+
+
+
+    <p>
+
+
+
+
+        <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Suite : attente des autres participants</button>
+</div>
+
+
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+{% endblock %}

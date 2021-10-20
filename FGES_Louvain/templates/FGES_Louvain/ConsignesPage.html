@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Test de personnalité
+{% endblock %}
+
+{% block content %}
+
+    <p>
+       Dans un premier temps, vous allez réaliser un test de personnalité. Ce test, mis au point par Gibson en
+1969 a pu établir que les choix des individus concernant des figures géométriques étaient fortement liés à
+leur style de raisonnement. Deux styles sont identifiés : Le traitement global (holistique) et le traitement
+focalisé.
+    </p>
+    <p>
+        <li>
+            Faire partie du groupe des personnes <b>focalisées</b> signifie que d’une manière générale on porte d'abord notre attention sur les détails.
+        </li>
+        <li>
+            Faire partie du groupe des personnes <b>holistiques</b> signifie que d’une manière générale on se porte d'abord notre attention sur une vue d'ensemble.
+        </li>
+    </p>
+    <p>
+       Les patterns de choix des figures qui vous seront présentées 2 par 2 permettent de savoir très rapidement qui est analytique et qui est holistique.
+    </p>
+    <p>
+      <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Commencer</button>
+</div>
+    </p>
+
+{% endblock %}
+
+
