@@ -45,297 +45,279 @@ class Player(BasePlayer):
     # age_cas1_IG = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
     #                                   min=12,
     #                                    max=30,
-    #                                    widget=widgets.Slider(attrs={'step': '1'}))
+    #                                    step=1, widget=widgets.SliderWidget)
     #
     # age_cas2_IG = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
     #                                        min=12,
     #                                        max=30,
-    #                                        widget=widgets.Slider(attrs={'step': '1'}))
+    #                                        step=1, widget=widgets.SliderWidget)
     #
     # age_cas3_IG = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
     #                                        min=12,
     #                                        max=30,
-    #                                        widget=widgets.Slider(attrs={'step': '1'}))
+    #                                        step=1, widget=widgets.SliderWidget)
     #
     # age_cas4_IG = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
     #                                        min=12,
     #                                        max=30,
-    #                                        widget=widgets.Slider(attrs={'step': '1'}))
+    #                                        step=1, widget=widgets.SliderWidget)
     #
     # age_cas5_IG = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
     #                                        min=12,
     #                                        max=30,
-    #                                        widget=widgets.Slider(attrs={'step': '1'}))
+    #                                        step=1, widget=widgets.SliderWidget)
     #
     # confidence_cas1_IG = models.PositiveIntegerField(
     #      max=100,
-    #      widget=widgets.Slider(attrs={'step': '5'}),
+    #      step=5, widget=widgets.SliderWidget,
     #      label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
     #            "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     #  )
     # confidence_cas2_IG = models.PositiveIntegerField(
     #     max=100,
-    #     widget=widgets.Slider(attrs={'step': '5'}),
+    #     step=5, widget=widgets.SliderWidget,
     #     label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
     #           "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     # )
     # confidence_cas3_IG = models.PositiveIntegerField(
     #     max=100,
-    #     widget=widgets.Slider(attrs={'step': '5'}),
+    #     step=5, widget=widgets.SliderWidget,
     #     label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
     #           "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     # )
     # confidence_cas4_IG = models.PositiveIntegerField(
     #     max=100,
-    #     widget=widgets.Slider(attrs={'step': '5'}),
+    #     step=5, widget=widgets.SliderWidget,
     #     label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
     #           "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     # )
     # confidence_cas5_IG = models.PositiveIntegerField(
     #     max=100,
-    #     widget=widgets.Slider(attrs={'step': '5'}),
+    #     step=5, widget=widgets.SliderWidget,
     #     label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
     #           "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     # )
 
-
-
-
-
-
-
-
-
-
-
     age_cas1_Entretien = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                      min=12,
-                                       max=30,
-                                       widget=widgets.Slider(attrs={'step': '1'}))
+                                                     min=12,
+                                                     max=30,
+                                                     step=1, widget=widgets.SliderWidget)
 
     age_cas2_Entretien = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                     min=12,
+                                                     max=30,
+                                                     step=1, widget=widgets.SliderWidget)
 
     age_cas3_Entretien = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                     min=12,
+                                                     max=30,
+                                                     step=1, widget=widgets.SliderWidget)
 
     age_cas4_Entretien = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                     min=12,
+                                                     max=30,
+                                                     step=1, widget=widgets.SliderWidget)
 
     age_cas5_Entretien = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                     min=12,
+                                                     max=30,
+                                                     step=1, widget=widgets.SliderWidget)
 
     confidence_cas1_Entretien = models.PositiveIntegerField(
-         max=100,
-         widget=widgets.Slider(attrs={'step': '5'}),
-         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
-               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
-     )
+        max=100,
+        step=5, widget=widgets.SliderWidget,
+        label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
+              "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
+    )
     confidence_cas2_Entretien = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas3_Entretien = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas4_Entretien = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas5_Entretien = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
 
-
-
-
     age_cas1_Photo = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                      min=12,
-                                       max=30,
-                                       widget=widgets.Slider(attrs={'step': '1'}))
+                                                 min=12,
+                                                 max=30,
+                                                 step=1, widget=widgets.SliderWidget)
 
     age_cas2_Photo = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                 min=12,
+                                                 max=30,
+                                                 step=1, widget=widgets.SliderWidget)
 
     age_cas3_Photo = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                 min=12,
+                                                 max=30,
+                                                 step=1, widget=widgets.SliderWidget)
 
     age_cas4_Photo = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                 min=12,
+                                                 max=30,
+                                                 step=1, widget=widgets.SliderWidget)
 
     age_cas5_Photo = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                 min=12,
+                                                 max=30,
+                                                 step=1, widget=widgets.SliderWidget)
 
     confidence_cas1_Photo = models.PositiveIntegerField(
          max=100,
-         widget=widgets.Slider(attrs={'step': '5'}),
+         step=5, widget=widgets.SliderWidget,
          label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
                "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
      )
     confidence_cas2_Photo = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas3_Photo = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas4_Photo = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas5_Photo = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
 
-
-
     age_cas1_test_oss = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                      min=12,
-                                       max=30,
-                                       widget=widgets.Slider(attrs={'step': '1'}))
+                                                    min=12,
+                                                    max=30,
+                                                    step=1, widget=widgets.SliderWidget)
 
     age_cas2_test_oss = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                    min=12,
+                                                    max=30,
+                                                    step=1, widget=widgets.SliderWidget)
 
     age_cas3_test_oss = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                    min=12,
+                                                    max=30,
+                                                    step=1, widget=widgets.SliderWidget)
 
     age_cas4_test_oss = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                    min=12,
+                                                    max=30,
+                                                    step=1, widget=widgets.SliderWidget)
 
     age_cas5_test_oss = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                    min=12,
+                                                    max=30,
+                                                    step=1, widget=widgets.SliderWidget)
 
     confidence_cas1_test_oss = models.PositiveIntegerField(
          max=100,
-         widget=widgets.Slider(attrs={'step': '5'}),
+         step=5, widget=widgets.SliderWidget,
          label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
                "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
      )
     confidence_cas2_test_oss = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas3_test_oss = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas4_test_oss = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas5_test_oss = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
 
-
-
-
     age_cas1_Etat_civil = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                      min=12,
-                                       max=30,
-                                       widget=widgets.Slider(attrs={'step': '1'}))
+                                                      min=12,
+                                                      max=30,
+                                                      step=1, widget=widgets.SliderWidget)
 
     age_cas2_Etat_civil = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                      min=12,
+                                                      max=30,
+                                                      step=1, widget=widgets.SliderWidget)
 
     age_cas3_Etat_civil = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                      min=12,
+                                                      max=30,
+                                                      step=1, widget=widgets.SliderWidget)
 
     age_cas4_Etat_civil = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                      min=12,
+                                                      max=30,
+                                                      step=1, widget=widgets.SliderWidget)
 
     age_cas5_Etat_civil = models.PositiveIntegerField(label="Quel âge donneriez-vous à ce jeune ?",
-                                           min=12,
-                                           max=30,
-                                           widget=widgets.Slider(attrs={'step': '1'}))
+                                                      min=12,
+                                                      max=30,
+                                                      step=1, widget=widgets.SliderWidget)
 
     confidence_cas1_Etat_civil = models.PositiveIntegerField(
          max=100,
-         widget=widgets.Slider(attrs={'step': '5'}),
+         step=5, widget=widgets.SliderWidget,
          label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
                "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
      )
     confidence_cas2_Etat_civil = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas3_Etat_civil = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas4_Etat_civil = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
     confidence_cas5_Etat_civil = models.PositiveIntegerField(
         max=100,
-        widget=widgets.Slider(attrs={'step': '5'}),
+        step=5, widget=widgets.SliderWidget,
         label="Sur une échelle de 0 à 100%, avec quel degré de certitude donnez-vous cet âge "
               "(0 signifiant que vous n’êtes pas certain du tout et 100 signifie que vous êtes absolument certain?"
     )
