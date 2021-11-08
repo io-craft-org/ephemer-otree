@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="justify"
+         style="background-color:white; text-align:center;">
+        Cas n°4 : informations générales
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="justify"
+                 style="background-color:white; text-align:center;">
+
+
+    <p>
+          <img src="{% static link %}" height=100% width=100% />
+    </p>
+    <p>
+            <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Suite</button>
+</div>
+
+    </p>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

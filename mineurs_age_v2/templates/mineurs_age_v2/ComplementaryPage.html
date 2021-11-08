@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <hr>
+        {% formfield player.question_nb_places_dispos %}
+    </p>
+    <p>
+        <hr>
+        <b>Questions vous concernant:</b>
+        {% formfield player.player_gender %}
+        {% formfield player.player_age %}
+    </p>
+    <p>
+        {% next_button %}
+    </p>
+
+{% endblock %}

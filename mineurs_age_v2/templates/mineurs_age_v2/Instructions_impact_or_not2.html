@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="justify"
+         style="background-color:white; text-align:left;">
+        Partie 3 : Instructions 2e étape
+    </div>
+{% endblock %}
+
+{% block content %}
+
+
+      {% if coupable == "no" %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="justify"
+                 style="background-color:white; text-align:left;">
+
+                <p>
+                    Pour information, le jeune, <strong> s’il est reconnu mineur </strong>, est pris en charge par la protection de l’enfance : il est
+                    hébergé, scolarisé, aidé dans ses démarches administratives…
+                   </p>
+                <p>
+                    <strong> Les jeunes qui ne sont pas reconnus mineurs </strong> se retrouvent généralement à la rue. Le seul moyen pour eux d’être protégés tout de même
+                    est d’aller devant le juge des enfants et de se faire aider par une association. De plus, les
+                    délais d’instructions sont longs (plusieurs mois) et l’issue incertaine. Si <i> in fine</i>, ils ne
+                    sont toujours pas reconnus mineurs, ils seront soumis au droit commun des étrangers et
+                    seront ainsi susceptibles d’être renvoyés dans leur Etat d’origine.
+        </p>
+                <p>
+
+                  Deux nouveaux cas vont vous être présentés. A nouveau il vous est demandé <b>d’indiquer l’âge que vous donneriez à ce jeune et le niveau de certitude</b> avec lequel vous avez déterminé cet âge.
+
+                </p>
+
+
+                <p>
+                <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Suite</button>
+</div>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+                    {% elif coupable == "yes" %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="justify"
+                 style="background-color:white; text-align:left;">
+
+                <p>
+                  Deux nouveaux cas vont vous être présentés. A nouveau il vous est demandé <b>d’indiquer l’âge que vous donneriez à ce jeune et le niveau de certitude</b> avec lequel vous avez déterminé cet âge.
+                <p>
+
+            <div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Suite</button>
+</div>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+                    {% endif %}
+
+
+
+{% endblock %}
+
+
+
