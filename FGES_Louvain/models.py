@@ -53,27 +53,27 @@ class Player(BasePlayer):
     # Data for questions_page
     appreciate_focal = models.PositiveIntegerField(label="J’apprécie le groupe des Focalisés :",
                                                    initial=25,
-                                                   min=0, max=50)
+                                                   min=0, max=50, step=1, widget=widgets.SliderWidget)
     identify_to_focal = models.PositiveIntegerField(label="Je m’identifie au groupe des Focalisés :",
                                                     initial=25,
-                                                    min=0, max=50)
+                                                    min=0, max=50, step=1, widget=widgets.SliderWidget)
     appreciate_holi = models.PositiveIntegerField(label="J’apprécie le groupe des Holistiques :",
                                                   initial=25,
-                                                  min=0, max=50)
+                                                  min=0, max=50, step=1, widget=widgets.SliderWidget)
     identify_to_holi = models.PositiveIntegerField(label="Je m’identifie au groupe des Holistiques :",
                                                    initial=25,
-                                                   min=0, max=50)
+                                                   min=0, max=50, step=1, widget=widgets.SliderWidget)
     # Question et Data for gruop fictif examples
     group_fict_example_1 = models.StringField(label="Fil :", choices=["Electrique", "Aiguille", "Corde", "Pêche"], widget=widgets.RadioSelect)
     group_fict_example_2 = models.StringField(label="Stylo :", choices=["Mine", "Encre", "Feuille", "Plume"], widget=widgets.RadioSelect)
 
     slider_fictex_1 = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     slider_fictex_2 = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     group_fict_real_1 = models.StringField(label="Plante :", choices=["Oxygène", "Fleur", "Feuille", "Verte"], widget=widgets.RadioSelect)
     group_fict_real_2 = models.StringField(label="Voiture :", choices=["Roue", "Essence", "Moto", "Moteur"], widget=widgets.RadioSelect)
@@ -81,56 +81,56 @@ class Player(BasePlayer):
 
     nous_groupe = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     nous_similaires = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     vision_commune = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     travail_ensemble = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     mots_nouveaux = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     amelioration = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     appreciate_self = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     identify_to_self = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     appartenance = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     heureux = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     faisant_partie = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     meilleurs = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     sentiment_membre = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
 
     satisfait = models.PositiveIntegerField(
         label="(Déplacez le curseur sur la position qui reflète le mieux votre estimation)",
-        initial=50, min=0, max=100)
+        initial=50, min=0, max=100, step=1, widget=widgets.SliderWidget)
