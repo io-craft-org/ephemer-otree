@@ -7,6 +7,12 @@ SESSION_CONFIGS = [
         num_demo_participants=3,
         app_sequence=['FGES_Louvain']
     ),
+    dict(
+        name='mineurs_age_v2',
+        display_name="La prise en charge des jeunes non accompagnés",
+        num_demo_participants=3,
+        app_sequence=['mineurs_age_v2']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
