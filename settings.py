@@ -19,6 +19,13 @@ SESSION_CONFIGS = [
        num_demo_participants=3,
        app_sequence=['voiture']
     ),
+    dict(
+       name='groupes_minimaux_labo',
+       display_name="Les groupes et leurs relations",
+       num_demo_participants=3,
+       representation_or_imputation="representation",
+       app_sequence=['groupes_minimaux_labo']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
