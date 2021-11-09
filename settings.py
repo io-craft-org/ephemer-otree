@@ -13,6 +13,12 @@ SESSION_CONFIGS = [
         num_demo_participants=3,
         app_sequence=['mineurs_age_v2']
     ),
+    dict(
+       name='voiture',
+       display_name="Décisions de la voiture autonome",
+       num_demo_participants=3,
+       app_sequence=['voiture']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
