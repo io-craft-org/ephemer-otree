@@ -8,9 +8,8 @@ from .models import Constants
 class InformationPage(Page):
     def vars_for_template(self):
         # At the beginning of this first page, set the participant's URL so that he can stop and come back later
-        parti = self.request.build_absolute_uri(self.player.participant._start_url())
+        parti = str(self.request.url)
         self.request.session["otree"] = parti
-        self.request.session.set_expiry(18000)
         return {
             'role': self.player.role(),
         }
