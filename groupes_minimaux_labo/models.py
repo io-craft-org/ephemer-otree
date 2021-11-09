@@ -92,16 +92,16 @@ class Player(BasePlayer):
     # Data for questions_page
     appreciate_picturaux = models.PositiveIntegerField(label="J’apprécie le groupe des picturaux :",
                                                        initial=25,
-                                                       min=1, max=50, widget=widgets.Slider(attrs={'step': '1'}))
+                                                       min=1, max=50, step=1, widget=widgets.SliderWidget)
     identify_to_picturaux = models.PositiveIntegerField(label="Je m’identifie au groupe des picturaux :",
                                                         initial=25,
-                                                        min=1, max=50, widget=widgets.Slider(attrs={'step': '1'}))
+                                                        min=1, max=50, step=1, widget=widgets.SliderWidget)
     appreciate_experientiels = models.PositiveIntegerField(label="J’apprécie le groupe des expérientiels :",
                                                            initial=25,
-                                                           min=1, max=50, widget=widgets.Slider(attrs={'step': '1'}))
+                                                           min=1, max=50, step=1, widget=widgets.SliderWidget)
     identify_to_experientiels = models.PositiveIntegerField(label="Je m’identifie au groupe des expérientiels :",
                                                             initial=25,
-                                                            min=1, max=50, widget=widgets.Slider(attrs={'step': '1'}))
+                                                            min=1, max=50, step=1, widget=widgets.SliderWidget)
     # Data for matrices
     matrix1_response = models.StringField()
     matrix2_response = models.StringField()
