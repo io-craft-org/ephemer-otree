@@ -1,0 +1,105 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+
+        {% if player.Self_or_other_first == 'other' and player.treatment == "Picturaux" %}
+            <p>
+                <span>
+                    <b>A votre avis, si on demandait aux expérientiels de donner quatre mots concernant les études,
+                        quelles seraient leurs réponses ?</b>
+                </span>
+                {% formfield player.experientiels_studies_1 %}
+                {% formfield player.experientiels_studies_2 %}
+                {% formfield player.experientiels_studies_3 %}
+                {% formfield player.experientiels_studies_4 %}
+            </p>
+            <p>
+                <span>
+                    <b> Et quels sont, en tant que pictural, les 4 mots ou expressions qui vous viennent à l’esprit quand on
+                        évoque le terme « études » ? </b>
+                </span>
+                {% formfield player.picturaux_studies_1 %}
+                {% formfield player.picturaux_studies_2 %}
+                {% formfield player.picturaux_studies_3 %}
+                {% formfield player.picturaux_studies_4 %}
+            </p>
+        {% elif player.Self_or_other_first == 'other' and player.treatment == "Experientiels" %}
+           <p>
+                <span>
+                    <b>A votre avis, si on demandait aux picturaux de donner quatre mots concernant les études,
+                        quelles seraient leurs réponses ?</b>
+                </span>
+                {% formfield player.picturaux_studies_1 %}
+                {% formfield player.picturaux_studies_2 %}
+                {% formfield player.picturaux_studies_3 %}
+                {% formfield player.picturaux_studies_4 %}
+            </p>
+            <p>
+                <span>
+                    <b> Et quels sont, en tant qu'expérientiel, les 4 mots ou expressions qui vous viennent à l’esprit quand on
+                        évoque le terme « études » ? </b>
+                </span>
+                {% formfield player.experientiels_studies_1 %}
+                {% formfield player.experientiels_studies_2 %}
+                {% formfield player.experientiels_studies_3 %}
+                {% formfield player.experientiels_studies_4 %}
+            </p>
+        {% elif player.Self_or_other_first == 'self' and player.treatment == "Experientiels"%}
+        <p>
+                <span>
+                    <b> Quels sont, en tant qu'expérientiel, les 4 mots ou expressions qui vous viennent à l’esprit quand on
+                        évoque le terme « études » ? </b>
+                </span>
+                {% formfield player.experientiels_studies_1 %}
+                {% formfield player.experientiels_studies_2 %}
+                {% formfield player.experientiels_studies_3 %}
+                {% formfield player.experientiels_studies_4 %}
+            </p>
+
+        <p>
+                <span>
+                    <b>Et, à votre avis, si on demandait aux picturaux de donner quatre mots concernant les études,
+                        quelles seraient leurs réponses ?</b>
+                </span>
+                {% formfield player.picturaux_studies_1 %}
+                {% formfield player.picturaux_studies_2 %}
+                {% formfield player.picturaux_studies_3 %}
+                {% formfield player.picturaux_studies_4 %}
+            </p>
+
+        {% elif player.Self_or_other_first == 'self' and player.treatment == "Picturaux" %}
+        <p>
+                <span>
+                    <b> Quels sont, en tant que pictural, les 4 mots ou expressions qui vous viennent à l’esprit quand on
+                        évoque le terme « études » ? </b>
+                </span>
+                {% formfield player.picturaux_studies_1 %}
+                {% formfield player.picturaux_studies_2 %}
+                {% formfield player.picturaux_studies_3 %}
+                {% formfield player.picturaux_studies_4 %}
+            </p>
+
+        <p>
+                <span>
+                    <b>Et, à votre avis, si on demandait aux expérientiels de donner quatre mots concernant les études,
+                        quelles seraient leurs réponses ?</b>
+                </span>
+                {% formfield player.experientiels_studies_1 %}
+                {% formfield player.experientiels_studies_2 %}
+                {% formfield player.experientiels_studies_3 %}
+                {% formfield player.experientiels_studies_4 %}
+            </p>
+
+        {% endif %}
+    </div>
+    <p>
+        {% next_button %}
+    </p>
+
+{% endblock %}

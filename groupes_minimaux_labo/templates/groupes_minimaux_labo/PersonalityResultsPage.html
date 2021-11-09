@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+	<meta http-equiv="refresh" content="15">
+
+<p>
+        {% if player.treatment == "Picturaux" %}
+            Sur la base des réponses fournies, vous faites partie du groupe des <b>picturaux</b>.
+          <br>
+        D’une manière générale vous
+            traitez les problèmes en vous formant une image mentale de la situation. <br>
+            {# for the laboratory version, half of the participants receive 48/52 info, the other half 52/48 #}
+           <br>
+
+
+        {% elif player.treatment == "Experientiels" %}
+            Sur la base des réponses fournies, vous faites partie du groupe des <b>expérientiels</b>.
+          <br>
+        D’une manière générale vous
+            traitez les problèmes en vous projetant mentalement dans la situation. <br>
+            {# for the laboratory version, half of the participants receive 48/52 info, the other half 52/48 #}
+           <br>
+
+        {% endif %}
+
+<!--     {% if player.repartition_information == Constants.c_repartition_information.0 %}-->
+<!--                Dans la salle, 48% des participants sont picturaux et 52% sont expérientiels.-->
+<!--            {% elif player.repartition_information == Constants.c_repartition_information.1 %}-->
+<!--                Dans la salle, 52% des participants sont picturaux et 48% sont expérientiels.-->
+<!--            {% endif %}-->
+    </p>
+<div style = "text-align: right">
+<button id="id_next" class="otree-btn-next btn btn-primary next-button otree-next-button">Continuer</button>
+</div>
+
+
+    </p>
+
+{% endblock %}
+
+{%block styles%}
+<style>
+.flotte {
+float:left;
+margin-right:20px;
+}
+    </style>
+{% endblock %}

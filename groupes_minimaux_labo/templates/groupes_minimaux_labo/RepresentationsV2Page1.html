@@ -1,0 +1,69 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div>
+        <p>
+            Vous trouverez ci-après une liste de 9 propositions en lien avec les études.
+            Vous allez devoir :
+        </p>
+        <p>
+            <li class="tabulation">
+                1.	Choisir les 3 propositions pour lesquelles votre groupe et celui des personnes
+                    {% if player.treatment == "Picturaux" %}
+                        expérientielles
+                    {% elif player.treatment == "Experientiels" %}
+                        picturales
+                    {% endif %}
+                risquent d'être le moins d'accord. Sélectionnez "Désaccord" pour ces 3 propositions.
+            </li>
+            <li class="tabulation">
+                             2.	Choisir les 3 propositions pour lesquelles votre groupe et celui des personnes
+                    {% if player.treatment == "Picturaux" %}
+                        expérientielles
+                    {% elif player.treatment == "Experientiels" %}
+                        picturales
+                    {% endif %}
+                pourraient le plus facilement être du même avis. Sélectionnez "Accord" pour ces 3 propositions.
+                          </li>
+            <li class="tabulation">
+                               3.	Sélectionner "Neutre" pour les 3 propositions restantes : celles qui ne correspondent ni à un accord ni à un désaccord franc.
+            </li>
+        </p>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            {% for field in form %}
+                <tr>
+                    <td>
+                        {{ field.label }}
+                    </td>
+                    <td>
+                        {{ field }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <div>
+        {% next_button %}
+    </div>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style>
+        .tabulation {
+            margin: 0 0 0 40px;
+        }
+    </style>
+{% endblock %}

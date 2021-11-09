@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Dans un premier temps, vous vous demandons de réaliser un test de personnalité. Ce test, mis au point par Marquès, Abrams
+        et Serôdio en 2001, a pu établir que les choix des individus concernant des figures géométriques étaient
+        fortement liés à leur style de raisonnement. Deux styles sont identifiés : le traitement expérientiel et
+        le traitement pictural.
+    </p>
+    <p>
+        <li>
+            Faire partie du groupe des personnes <b>expérientielles</b> signifie que d’une manière générale on se projette
+            mentalement dans une situation pour traiter un problème.
+        </li>
+        <li>
+            Faire partie du groupe des personnes <b>picturales</b> signifie que d’une manière générale on se forme une image
+            mentale de la situation pour traiter un problème.
+        </li>
+    </p>
+    <p>
+       Les figures visuelles que vous allez choisir vont permettre de savoir très rapidement si vous faites partie des personnes expérientielles ou des personnes picturales.
+    </p>
+    <p>
+        {% next_button %}
+    </p>
+
+{% endblock %}

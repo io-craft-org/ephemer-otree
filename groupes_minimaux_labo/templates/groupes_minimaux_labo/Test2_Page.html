@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Parmi les 2 figures suivantes, merci de choisir celle que vous préférez en cliquant la lettre située sous la
+        figure :
+        <table>
+            <tr>
+                <td>
+                    <img src="{% static "groupes_minimaux_labo/test2_figA.jpg" %}" width="100%"/>
+                </td>
+                <td>
+                    <img src="{% static "groupes_minimaux_labo/test2_figB.jpg" %}" width="100%"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button name="test2_answer" value="A" class="btn btn-primary">A</button>
+                </td>
+                <td>
+                    <button name="test2_answer" value="B" class="btn btn-primary">B</button>
+                </td>
+            </tr>
+        </table>
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table, td, th {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Grille de rémunération 1 / 2
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        A présent, imaginez qu’une somme d’argent doit être répartie entre votre groupe
+
+             {% if player.treatment == "Picturaux" %}
+        (celui des <strong>picturaux</strong>)
+             {% elif player.treatment == "Experientiels" %}
+        (celui des <strong>expérientiels</strong>)
+        {% endif %}
+
+        et
+        l’autre groupe
+
+
+             {% if player.treatment == "Picturaux" %}
+        (les expérientiels).
+             {% elif player.treatment == "Experientiels" %}
+        (les picturaux).
+        {% endif %}
+
+ <br>
+        <br>
+        Nous vous demandons de choisir la répartition qui vous convient le mieux dans la grille ci-desous en cliquant sur la case "&#9989;" en haut de la colonne de votre choix.
+
+         <br>
+         <br>
+        Par exemple ici, choisir la 4e colonne de répartition dans la grille signifie que vous choisissez de donner 16€ à un membre de votre groupe (les picturaux) et 7€ pour un membre de l'autre groupe (les expérientiels).
+         <br>
+
+
+    </p>
+    <p>
+        <table>
+            <tr id="id_buttons_row">
+                <td></td>
+
+                <td><button name="matrix1_response" value="19_1" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="18_3" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="17_5" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="16_7" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="15_9" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="14_11" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="13_13" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="12_15" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="11_17" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="10_19" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="9_21" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="8_23" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+                <td><button name="matrix1_response" value="7_25" class="btn btn-primary"><font size="3">&#9989;</font></button></td>
+
+
+            </tr>
+            <tr id="id_mygroup_row">
+                <td height = "100">
+                    {% if player.treatment == "Picturaux" %}
+                        Un membre du groupe des Picturaux
+                    {% elif player.treatment == "Experientiels" %}
+                        Un membre du groupe des Expérientiels
+                    {% endif %}
+                </td>
+                <td>19€</td>
+                <td>18€</td>
+                <td>17€</td>
+                <td>16€</td>
+                <td>15€</td>
+                <td>14€</td>
+                <td>13€</td>
+                <td>12€</td>
+                <td>11€</td>
+                <td>10€</td>
+                <td>9€</td>
+                <td>8€</td>
+                <td>7€</td>
+            </tr>
+            <tr id="id_othergroup_row">
+                <td height = "100">
+                    {% if player.treatment == "Picturaux" %}
+                        Un membre du groupe des Expérientiels
+                    {% elif player.treatment == "Experientiels" %}
+                        Un membre du groupe des Picturaux
+                    {% endif %}
+
+
+                </td>
+                <td>1€</td>
+                <td>3€</td>
+                <td>5€</td>
+                <td>7€</td>
+                <td>9€</td>
+                <td>11€</td>
+                <td>13€</td>
+                <td>15€</td>
+                <td>17€</td>
+                <td>19€</td>
+                <td>21€</td>
+                <td>23€</td>
+                <td>25€</td>
+            </tr>
+        </table>
+    </p>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        table, td, th {
+            border: 2px solid black;
+            text-align: center;
+            column-width: 150px;
+               }
+    </style>
+{% endblock %}
