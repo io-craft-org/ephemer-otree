@@ -26,6 +26,12 @@ SESSION_CONFIGS = [
        representation_or_imputation="representation",
        app_sequence=['groupes_minimaux_labo']
     ),
+    dict(
+        name='com_serielle',
+        display_name="Rumeurs et infoxs",
+        num_demo_participants=7,
+        app_sequence=['com_serielle']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
