@@ -86,6 +86,15 @@ class Subsession(BaseSubsession):
             'all_groups_per_page': all_groups_per_page,
         }
 
+    def group_by_arrival_time_method(self, waiting_players):
+        if len(waiting_players) >= Constants.players_per_group:
+            # Create the new group
+            new_group = []
+            for index, player in enumerate(waiting_players):
+                new_group.append(player)
+                player.rank_in_chain = index + 1
+            return new_group
+
 
 class Group(BaseGroup):
     initial_message = models.StringField()
