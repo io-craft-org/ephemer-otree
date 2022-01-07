@@ -1,0 +1,21 @@
+{% extends 'otree/WaitPage.html' %}
+{% load otree %}
+
+{% block title %} Attente des autres messages {% endblock %}
+
+{% block content %}
+    <meta http-equiv="refresh" content="15">
+    <p>
+        <b>Nous sommes au tour {{ subsession.round_number }}, vous intervenez au tour {{ player.rank_in_chain }}</b>
+        <br><br>
+        Merci de patienter
+    </p>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .tabulation {
+            margin: 0 0 0 40px;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>
+            Bonjour, dans le cadre de cette expérimentation, vous allez voir apparaître un message sur votre écran.
+            Ce message apparaît pour une durée limitée. Il vous est demandé de lire attentivement ce message, puis de
+            le réécrire dans l’espace qui s’affichera sur votre écran, une fois que la durée sera écoulée.
+        </p>
+        <p>
+            Le message étant transmis de personne en personne, il est possible que vous ayez à patienter, le temps que
+            les participants placés avant vous lisent et réécrivent le message (que vous recevrez ensuite).
+        </p>
+    </div>
+    <div>
+        {% next_button %}
+    </div>
+{% endblock %}
+

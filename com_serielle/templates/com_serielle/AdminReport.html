@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            window.onload = function() {
+                    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+                    var socket = new WebSocket(ws_scheme + '://' + window.location.host + "/com_serielle/masterofceremony");
+                    // Handle any errors that occur.
+                    socket.onerror = function(error) {
+                        console.log('WebSocket Error: ' + error);
+                    };
+                    sendorder = function(what) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: what,
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    pushallonpage = function(pagename) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: "push_all_players_on_page",
+                            page_name: pagename,
+                            round_nb: {{subsession.round_number}}
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    pushactivegroup = function(group_pk, pagename) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: "push_active_players_on_page",
+                            group_pk: group_pk,
+                            page_name: pagename,
+                            round_nb: {{subsession.round_number}}
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    pushinactivegroup = function(group_pk, pagename) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: "push_inactive_players_on_page",
+                            group_pk: group_pk,
+                            page_name: pagename,
+                            round_nb: {{subsession.round_number}}
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    deactivate_all_group = function(group_pk, pagename) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: "deactivate_all_group_on_page",
+                            group_pk: group_pk,
+                            page_name: pagename,
+                            round_nb: {{subsession.round_number}}
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    reactivate_all_group = function(group_pk, pagename) {
+                        var msg = {
+                            subsession_pk: {{subsession.pk}},
+                            order: "reactivate_all_group_on_page",
+                            group_pk: group_pk,
+                            page_name: pagename,
+                            round_nb: {{subsession.round_number}}
+                            };
+                        if(socket.readyState === socket.OPEN){
+                            socket.send(JSON.stringify(msg));
+                        }
+                    };
+                    // Show a connected message when the WebSocket is opened.
+                    socket.onopen = function(event) {
+                        console.log('connected to oTree');
+                    };
+                    // Handle messages sent by the server.
+                    socket.onmessage = function(event) {
+                        var obj = jQuery.parseJSON(event.data);
+                        order = obj.order;
+                        if(order=="refresh"){
+                            location.reload();
+                        }
+                    };
+                    // Show a disconnected message when the WebSocket is closed.
+                    socket.onclose = function(event) {
+                        console.log('disconnected from oTree');
+                    };
+                };
+        </script>
+    </head>
+
+
+    <body>
+        <p>
+            <table border="1">
+                <tr>
+                    <th>Actions</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input id='id_startmonitoringbutton'
+                               class="btn  btn-large" onclick='sendorder("StartMonitoring")'
+                               type="button"  value="StartMonitoring">
+                        <br>
+                        <input id='id_startpushingbutton'
+                               class="btn  btn-large" onclick='sendorder("StartPushing")'
+                               type="button"  value="StartPushing">
+                        <br>
+                        <input id='id_stopmonitoringbutton'
+                               class="btn  btn-large" onclick='sendorder("StopMonitoring")'
+                               type="button"  value="StopMonitoring">
+                        <br>
+                        <input id='id_stoppushingbutton'
+                               class="btn  btn-large" onclick='sendorder("StopPushing")'
+                               type="button"  value="StopPushing">
+                    </td>
+                    <td>
+                        <b>Session variables:</b><br>
+                        {% for key, value in session.vars.items %}
+                            {{ key }}: {{ value }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </p>
+        <p>
+            <table border="1">
+                <tr>
+                    <th align="center" style="background-color:LightGrey">Groupe</th>
+                    {% for page, iswait, isstop in all_pages %}
+                        {% if iswait %}
+                            <th align="center" style="background-color:GoldenRod">{{ page }}</th>
+                        {% elif isstop %}
+                            <th align="center" style="background-color:BlueViolet">{{ page }}</th>
+                        {% else %}
+                            <th align="center" style="background-color:SpringGreen">{{ page }}</th>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td align="center" style="background-color:LightGrey">
+                        <b>Nombre de participants</b>
+                    </td>
+                    {% for page, isstop, nb in nb_players_per_page_list %}
+                        {% if nb != 0 %}
+                            <td align="center" style="background-color:Grey">
+                                <b>{{ nb }}</b>
+                                <br>
+                                {% if isstop %}
+                                    <input id='id_push_{{page}}'
+                                           class="btn btn-danger" onclick="pushallonpage('{{page}}')"
+                                           type="button"  value="Push All">
+                                {% else %}
+                                    <input id='id_pushstopp_{{page}}'
+                                           class="btn" onclick="pushallonpage('{{page}}')"
+                                           type="button"  value="Push All">
+                                {% endif %}
+                           </td>
+                        {% else %}
+                            <td align="center" style="background-color:LightGrey">
+                                <b>{{ nb }}</b>
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% for groupe in all_groups_per_page %}
+                    <tr>
+                        <td align="center"><b>{{groupe.0}}</b></td>
+                        {% for page, iswait, nbactive, nbinactive in groupe.2 %}
+                            {% if nbactive != 0 or nbinactive != 0 %}
+                                <td align="center">
+                                    <b>Active: {{ nbactive }}</b><br>
+                                    {% if iswait %}
+                                        <input id='id_pushwaitpage_activegroup_{{groupe.0}}'
+                                               class="btn btn-warning" onclick="pushactivegroup('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Push Active">
+                                    {% else %}
+                                        <input id='id_pushnowaitpage_activegroup_{{groupe.0}}'
+                                               class="btn btn-success" onclick="pushactivegroup('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Push Active">
+                                    {% endif %}
+                                    <br><b>Inactive: {{ nbinactive }}</b><br>
+                                    {% if iswait %}
+                                        <input id='id_pushwaitpage_inactivegroup_{{groupe.0}}'
+                                               class="btn btn-warning" onclick="pushinactivegroup('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Push Inactive"><br>
+                                        <input id='id_reactivatewaitpage_players_{{groupe.0}}'
+                                               class="btn btn-warning" onclick="reactivate_all_group('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Reactivate All Group"><br>
+                                        <input id='id_deactivatewaitpage_players_{{groupe.0}}'
+                                               class="btn btn-warning" onclick="deactivate_all_group('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Deactivate All Group"><br>
+                                    {% else %}
+                                        <input id='id_pushnowaitpage_inactivegroup_{{groupe.0}}'
+                                               class="btn btn-success" onclick="pushinactivegroup('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Push Inactive"><br>
+                                         <input id='id_reactivate_players_{{groupe.0}}'
+                                               class="btn btn-success" onclick="reactivate_all_group('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Reactivate All Group"><br>
+                                        <input id='id_deactivate_players_{{groupe.0}}'
+                                               class="btn btn-success" onclick="deactivate_all_group('{{groupe.1}}', '{{page}}')"
+                                               type="button"  value="Deactivate All Group"><br>
+                                   {% endif %}
+                              </td>
+                            {% else %}
+                                <td align="center">
+                                    Active: {{ nbactive }}<br>
+                                    Inactive: {{ nbinactive }}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </p>
+
+    </body>
+</html>

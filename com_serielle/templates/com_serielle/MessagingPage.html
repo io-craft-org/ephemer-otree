@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+{% endblock %}
+
+
+{% block content %}
+
+<hr>
+    <div id="id_timer_div">
+        <span id="id_timer"></span> <br>
+        <span>
+            <i><u>
+                Merci de lire attentivement le message présenté ci-dessous.
+                Il vous sera ensuite demandé de le restituer par écrit.
+            </u></i>
+        </span> <br>
+
+    </div>
+<hr>
+    <div id="id_passed_message">
+        {{ passed_message|linebreaks }}
+    </div>
+<hr>
+    <div id="id_typing_message" style="visibility:hidden">
+        {% formfield group.message %}
+        {% next_button %}
+    </div>
+<hr>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var timeout_inseconds = {{ current_timeout|json }};
+        var intervalId = null;
+
+        hide_message_show_typing_box = function(){
+            document.getElementById("id_passed_message").style.visibility = "hidden";
+            document.getElementById("id_typing_message").style.visibility = "visible";
+            clearInterval(intervalId);
+            timeout_inseconds = 0;
+            document.getElementById("id_timer").innerHTML = timeout_inseconds + " secondes restantes";
+        };
+        countdown = function(){
+            timeout_inseconds --;
+            if(timeout_inseconds <= 0){
+                hide_message_show_typing_box();
+            }
+            else {
+                document.getElementById("id_timer").innerHTML = timeout_inseconds + " secondes restantes";
+            }
+        }
+
+        window.onload = function () {
+            if(timeout_inseconds <= 0){
+                hide_message_show_typing_box();
+            }
+            intervalId = setInterval(countdown, 1000);
+            // Prevent people from pasting
+            $('#id_typing_message').bind('paste', function (e) {
+                e.preventDefault();
+            });
+        };
+    </script>
+{% endblock %}
