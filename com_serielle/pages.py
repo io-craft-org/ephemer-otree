@@ -12,15 +12,6 @@ class GroupingWaitPage(WaitPage):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
-    # def get_players_for_group(self, waiting_players):
-    #     if len(waiting_players) >= Constants.players_per_group:
-    #         # Create the new group
-    #         new_group = []
-    #         for index, player in enumerate(waiting_players):
-    #             new_group.append(player)
-    #             player.rank_in_chain = index + 1
-    #         return new_group
-
     def after_all_players_arrive(self):
         self.group.set_initial_message()
         self.group.propagate_data()
