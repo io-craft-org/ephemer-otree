@@ -32,6 +32,12 @@ SESSION_CONFIGS = [
         num_demo_participants=7,
         app_sequence=['com_serielle']
     ),
+    dict(
+       name='evasion_FINAL_BIDEN',
+       display_name="Fiscalité appliquée et rapport à l'impôt",
+       num_demo_participants=3,
+       app_sequence=['evasion_FINAL_BIDEN']
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

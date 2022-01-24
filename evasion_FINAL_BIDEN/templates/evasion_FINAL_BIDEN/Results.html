@@ -1,0 +1,521 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'evasion_FINAL_BIDEN/evasion_FINAL_BIDEN_style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <center> <strong> RESULTATS DU TOUR {{subsession.round_number}} </strong> </center>
+{% endblock %}
+
+{% block content %}
+
+<div class="cadre">
+
+{% if player.ROLE != 'A'%}
+
+<table style="width: 100%;">
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Rôle et groupe
+        </td>  
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+            Votre role est :
+        </td>
+
+        <td class="td_results_rep">
+            {{player.ROLE}}
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Votre groupe d'origine est :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.GROUP_NAME_PARTICIPANT_ORIGIN }}
+        </td>
+    </tr>
+
+{% if player.ROLE == 'B' %}
+{% if subsession.round_number > 1 %}
+    <tr>
+        <td class="td_results_cat">
+            Au tour d'avant vous étiez dans le groupe :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.GROUP_NAME_PARTICIPANT_N_MOINS_UN }}
+        </td>
+    </tr>
+{% endif %}
+
+    <tr>
+        <td class="td_results_cat">
+            Pour ce tour, vous avez choisi d'appartenir au groupe :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.GROUP_NAME_PARTICIPANT }}
+        </td>
+    </tr>
+{% endif %}
+
+    <tr>
+        <td class="td_results_cat">
+            Nombre de joueurs dans le groupe {{ player.GROUP_NAME_PARTICIPANT }} :
+        </td>
+
+        <td class="td_results_rep">
+            {{ group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B }}
+        </td>
+    </tr>
+
+    <tr>
+
+        <td class="td_results_cat">
+            Ce groupe est composé de : 
+        </td>
+    
+        <td class="td_results_rep" >
+                1 joueur A <br>
+                {% if group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B <= 1 %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueur B {% else %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueurs B {% endif %}  <br>
+                {{Constants.numb_of_player_C_per_group}} joueurs C 
+        </td>
+    </tr>
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Revenu et déclaration de revenu
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Le taux d'imposition choisi par le joueur A était de :
+        </td>
+
+        <td class="td_results_rep">
+            {{ group.TX_IMPOSITION }}%
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Votre revenu initial pour ce tour était de :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.REVENU_INITIAL }} ECU
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+            Vous avez déclaré : 
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.DECLARATION }} ECU
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Basé sur votre déclaration, vous avez payé en impots :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.MONTANT_IMPOT }} ECU
+        </td>
+    </tr>
+
+
+
+    {% if player.ROLE == 'B' %}
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Taxe Compensatoire
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Devez-vous payer la taxe compensatoire ?
+        </td>
+
+        <td class="td_results_rep">
+             {% if player.HAVE_TO_PAY_BIDEN == 1 %} OUI {% else %} NON {% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat" colspan = 2>
+            {% if player.GROUP_NAME_PARTICIPANT_ORIGIN == player.GROUP_NAME_PARTICIPANT  and player.HAVE_TO_PAY_BIDEN == 0 %}
+                Vous n'avez pas changé de pays d'origine. <br>
+                Vous ne payez donc pas la taxe compensatoire. 
+
+            {% elif player.HAVE_TO_PAY_BIDEN == 1 %}
+                Vous vous êtes rendu dans un groupe dont le taux d'imposition est inférieur à {{Constants.SEUIL_BIDEN}}%. <br>
+                De plus, votre groupe d'origine à un taux d'imposition plus grand que {{Constants.SEUIL_BIDEN}}%. <br>
+                Vous devez donc payer la taxe compensatoire. 
+
+            {% elif player.TX_ORIGIN < player.TX_NOW and player.TX_NOW < Constants.SEUIL_BIDEN and player.HAVE_TO_PAY_BIDEN == 0 %}
+                Vous vous êtes rendu dans un groupe dont le taux d'imposition est inférieur à {{Constants.SEUIL_BIDEN}}%. <br>
+                Toutefois, votre groupe d'origine a également un taux d'imposition inférieur à {{Constants.SEUIL_BIDEN}}%. <br>
+                Vous ne payez donc pas la taxe compensatoire. 
+
+            {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN != player.GROUP_NAME_PARTICIPANT  and player.TX_NOW > Constants.SEUIL_BIDEN and player.HAVE_TO_PAY_BIDEN == 0 %}
+                Le groupe que vous avez choisi applique un taux d'imposition supérieur à {{Constants.SEUIL_BIDEN}}%. <br>
+                Vous ne payez donc pas la taxe compensatoire. 
+
+            {% endif %}
+        </td>
+    </tr>
+
+    {% if player.HAVE_TO_PAY_BIDEN == 1 %}
+
+    <tr>
+        <td class="td_results_cat">
+            Votre groupe d'origine a appliqué un taux d'imposition de {{ player.TX_ORIGIN }}%. <br>
+            Votre groupe d'acueil a appliqué un taux d'imposition de {{ player.TX_NOW }}%. Vous devez donc payer la différence à votre groupe d'origine, soit :
+        </td>
+
+        <td class="td_results_rep">
+             {{ player.TX_IMPOT_BIDEN }}% du montant que vous avez déclaré.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+           Montant de l'impôt payé à votre pays d'origine : 
+        </td>
+
+        <td class="td_results_rep">
+             {{ player.MONTANT_IMPOT_BIDEN }} ECU
+        </td>
+    </tr>
+
+
+    {% endif %}
+
+    
+
+    {% endif %}
+
+
+
+
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Contrôle des déclarations
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Avez-vous été controlé ?
+        </td>
+
+        <td class="td_results_rep">
+             {% if player.CONTROL == 1 %} OUI {% else %} NON {% endif %}
+        </td>
+    </tr>
+
+
+    {% if player.CONTROL == 1 and player.FRAUDE == 1 %}
+    <tr>
+        <td class="td_results_cat">
+            Avez-vous fraudé ?
+        </td>
+
+        <td class="td_results_rep">
+            OUI. Vous aviez comme revenu initial : {{ player.REVENU_INITIAL }} ECU. <br>
+            Vous avez déclaré : {{ player.DECLARATION }} ECU.
+        </td>
+
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Montant de la pénalité :
+        </td>
+
+        <td class="td_results_rep">
+            {{ player.PENALTY }} ECU <br> En arrondissant votre pénalité s'élève à : {{ player.ROUNDED_PENALTY}} ECU.
+        </td>
+
+    </tr>
+
+    {% elif player.CONTROL == 1 and player.FRAUDE == 0 %}
+
+    <tr>
+        <td class="td_results_cat">
+            Avez-vous fraudé ?
+        </td>
+
+        <td class="td_results_rep">
+           NON
+        </td>
+
+    </tr>
+
+     {% endif%}
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Redistribution par le joueur A
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Le joueur A a récolté au total : 
+        </td>
+
+        <td class="td_results_rep">
+           {{group.TOTAL_COLLECT_WITH_BIDEN}} ECU de taxes
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Après multiplication par 1.7 du montant total des taxes collectés, la collecte s'élève à : 
+        </td>
+
+        <td class="td_results_rep">
+           {{group.TOTAL_COLLECT_MULTIPLIER}} ECU de taxes
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Le joueur A a choisi un taux de redistribution de : 
+        </td>
+
+        <td class="td_results_rep">
+            {{ group.TX_REDISTRIBUTION }}% 
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Le joueur A s'est donc rémunéré à hauteur de {{ group.A_TX_POUR_SOI_GPE }}% du montant total des taxes, ce qui représente : 
+        </td>
+
+        <td class="td_results_rep">
+           {{ group.A_REMUNERATION }} ECU
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Le joueur A a donc redistribué  {{ group.TX_REDISTRIBUTION }}% : 
+        </td>
+
+        <td class="td_results_rep">
+           {{ group.TOTAL_MONTANT_A_PARTAGER }} ECU 
+        </td>
+
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+             Chaque joueur (sauf le joueur A) a alors obtenu :
+        </td>
+
+        <td class="td_results_rep">
+           {{group.MONTANT_A_PARTAGER }} ECU en plus
+        </td>
+
+    </tr>
+
+
+</table>
+
+
+
+<div style="margin-top: 5%;">
+    <center style="color: red; font-weight: bold; font-size: 20px;">
+        
+    <strong>
+        Votre revenu pour ce tour est donc de : {{ player.REVENU_FINAL }} ECU <br>
+    </strong>
+    </center>
+    </div>
+
+
+
+
+
+{% else %}
+
+<table>
+
+<tr style="height: 20px;">
+    <td colspan = 2 style="font-weight:bold; color: green;">
+        Rôle et nombre de joueurs
+    </td>  
+</tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Votre role est :
+        </td>
+        <td class="td_results_rep">
+            {{ player.ROLE }}
+        </td>
+    </tr>
+
+    
+    <tr>
+        <td class="td_results_cat">
+            Nombre de participants dans votre groupe (vous inclus) :
+        </td>
+        <td class="td_results_rep">
+             {{ group.NUMB_PLAYER_PER_GROUP }}
+        </td>
+    </tr>
+
+    <tr>
+
+        <td class="td_results_cat">
+            Ce groupe est composé de : 
+        </td>
+    
+        <td class="td_results_rep" >
+                1 joueur A <br>
+                {% if group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B <= 1 %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueur B {% else %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueurs B {% endif %}  <br>
+                {{Constants.numb_of_player_C_per_group}} joueurs C 
+        </td>
+    </tr>
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Taux d'imposition
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Vous avez opté pour un taux d'imposition de :
+        </td>
+        <td class="td_results_rep">
+             {{ group.TX_IMPOSITION }}%
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+            Le total des impots collectés était de :
+        </td>
+        <td class="td_results_rep">
+             {{group.TOTAL_COLLECT_WITH_BIDEN }} ECU
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+            Après multiplication par 1.7 du total des impots collectés, la cagnotte s'élève à :
+        </td>
+        <td class="td_results_rep">
+             {{ group.TOTAL_COLLECT_MULTIPLIER }} ECU
+        </td>
+    </tr>
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Taux de redistribution
+        </td>  
+    </tr>
+
+
+    <tr>
+        <td class="td_results_cat">
+            Vous avez opté pour un taux de redistribution de :
+        </td>
+        <td class="td_results_rep">
+             {{ group.TX_REDISTRIBUTION }}%
+        </td>
+    </tr>    
+
+    <tr>
+        <td class="td_results_cat">
+            Vous avez donc redistribué aux autre joueurs : 
+        </td>
+        <td class="td_results_rep">
+             {{ group.TOTAL_MONTANT_A_PARTAGER }} ECU
+        </td>
+    </tr>
+
+
+    <tr>
+       <td class="td_results_cat">
+            Chaque joueur de votre groupe a donc reçu 
+        </td>
+        <td class="td_results_rep">
+             {{group.MONTANT_A_PARTAGER }} ECU en plus
+        </td>
+    </tr>
+
+
+    <tr style="height: 20px;">
+        <td colspan = 2 style="font-weight:bold; color: green; padding-top: 2%;">
+            Votre rémunération
+        </td>  
+    </tr>
+
+    <tr>
+        <td class="td_results_cat">
+            Puisque vous avez décidé d'un taux de redistribution de {{ group.TX_REDISTRIBUTION }}%, vous avez donc
+            gardé pour vous {{ player.A_TX_POUR_SOI }}% du montant total des impots collectés. Vous vous êtes rémunéré à hauteur de : 
+        </td>
+        <td class="td_results_rep">
+             {{player.REVENU_FINAL}} ECU
+        </td>
+    </tr>
+
+
+    
+
+</table>
+
+
+
+<div style="margin-top: 5%;">
+    <center style="color: red; font-weight: bold; font-size: 20px;">
+        
+    <strong>
+        Votre revenu pour ce tour est donc de : {{ player.REVENU_FINAL }} ECU <br>
+    </strong>
+    </center>
+    </div>
+
+
+
+{% endif %}
+
+</div>
+
+
+    <div class="boutton">
+        <button class="suivant_btn"> TERMINER CE TOUR </button>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    
+{% endblock %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'evasion_FINAL_BIDEN/evasion_FINAL_BIDEN_style.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class = "cadre">
+
+   
+
+    <div class="question">
+        Avant de commencer cette expérience, veuillez cochez la case ci-dessous. Si vous ne le faites pas, vous ne pourrez pas participer.
+    </div>
+
+
+    <div class = "reponse"> 
+        <input type="radio" name= 'IS_NOT_A_BOT'  initial = 0 value= 1 > Je souhaite participer à l'expérience
+    </div>
+
+
+{% if form.IS_NOT_A_BOT.errors %}
+N'oubliez pas de cocher la case.
+
+<div class="masque_error">
+{{form.IS_NOT_A_BOT.errors }}
+<div>
+{% endif %}
+
+</div>
+
+    <div class=boutton>
+        <button class="button" style="vertical-align:middle"><span>SUIVANT </span></button>
+    </div>
+
+
+{% endblock %}

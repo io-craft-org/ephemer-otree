@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'evasion_FINAL_BIDEN/evasion_FINAL_BIDEN_style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <center> <strong> RESULTATS DU TOUR {{subsession.round_number}} </strong> </center>
+{% endblock %}
+
+{% block content %}
+
+<div class="cadre">
+
+<div style="font-style: italic;">
+Nous allons maintenant procéder à votre rémunération pour cette expérience.
+
+
+
+<br>
+<br>
+
+Nous avons sélectionné au hasard les revenus des 3 périodes différentes parmi les 10 périodes.
+
+<br>
+<br>
+
+Nous ferons ensuite la moyenne des trois revenus finaux que vous avez obtenu.
+
+</div>
+
+<br>
+<br> 
+
+<div style="font-weight: bold; border-top: 5px solid black; padding-top: 2%;">
+Les trois revenus revenus finaux sélectionnés sont : <br>
+{{participant.vars.REVENU_FINAL_3_TOURS.0}} ECU, {{participant.vars.REVENU_FINAL_3_TOURS.1}} ECU et {{participant.vars.REVENU_FINAL_3_TOURS.2}} ECU.
+
+
+<br>
+<br>
+
+La moyenne de ces revenus est alors de {{player.SUM_REVENU_FINAL_3_TOURS }} ECU.
+
+<br>
+<br>
+De plus, pour votre participation à cette expérience : vous recevez {{ Constants.show_up }} ECU.
+
+
+<ul>
+
+  </div>
+
+</ul>
+
+<center style="color: red; font-weight: bold; font-size: 20px;">
+<strong>
+    En additionnant vos gains, vous repartez de cette expérience avec : {{player.PAIEMENT_EXPERIENCE }} ECU <br>
+</strong>
+</center>
+
+
+
+
+
+</div>
+
+
+    <div class="boutton">
+        <button class="suivant_btn"> TERMINER L'EXPERIENCE </button>
+    </div>
+{% endblock %}
+
+
