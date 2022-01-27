@@ -176,6 +176,7 @@ class Subsession(BaseSubsession):
             # DANS TOUS LES AUTRES CAS
                 else:
                     p.TX_IMPOT_BIDEN = 0
+                    p.HAVE_TO_PAY_BIDEN = 0
 
             else:
                 p.TX_IMPOT_BIDEN = 0
