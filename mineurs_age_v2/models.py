@@ -20,7 +20,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'mineurs_age_v2'
     players_per_group = None
-    num_rounds = 3
+    num_rounds = 1
     guilty = ["yes", "no"]
     # c_infos = ["entretien", "etat_civil", "test_osseux"]
     c_timeout_inseconds = 120
