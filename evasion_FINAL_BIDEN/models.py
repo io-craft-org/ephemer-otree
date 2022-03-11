@@ -243,7 +243,7 @@ class Subsession(BaseSubsession):
                         p.FRAUDE = 0
 
                     # CONTROLE AUDIT OR NOT AUDIT 
-                    p.CONTROL = random.choices([0, 1], weights=[0, 1])[0]
+                    p.CONTROL = random.choices([0, 1], weights=[10, 1])[0]
 
                     if p.CONTROL == 0:
                         p.REVENU_APRES_IMPOT = int(round(p.REVENU_INITIAL - p.MONTANT_IMPOT - p.MONTANT_IMPOT_BIDEN))
