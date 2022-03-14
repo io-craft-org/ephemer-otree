@@ -35,7 +35,7 @@ SESSION_CONFIGS = [
     dict(
        name='evasion_FINAL_BIDEN',
        display_name="Fiscalité appliquée et rapport à l'impôt",
-       num_demo_participants=3,
+       num_demo_participants=10,
        app_sequence=['evasion_FINAL_BIDEN']
     ),
 ]

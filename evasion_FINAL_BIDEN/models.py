@@ -31,7 +31,7 @@ doc = """
 
 class Constants(BaseConstants):
     name_in_url = 'evasion_FINAL_BIDEN'
-    players_per_group = 3
+    players_per_group = 5
     num_rounds = 3
 
     delai_page = 3000
@@ -40,7 +40,7 @@ class Constants(BaseConstants):
 
     show_up = 5
 
-    rolage= ['A', 'B', 'C']
+    rolage= ['A', 'B', 'B', 'C', 'C']
 
     nom_groupe = [ 'bleu', 'jaune', 'orange' , 'rouge', 'vert', 'noir', 'blanc']
 
@@ -63,11 +63,11 @@ class Constants(BaseConstants):
 
 
 # variables à changer en fonction du nombre de personnes dans un groupe au début de l'expérience
-    numb_of_players_non_B = 2
+    numb_of_players_non_B = 3
 
-    numb_of_player_C_per_group = 1
+    numb_of_player_C_per_group = 2
 
-    numb_of_player_B_per_group = 1
+    numb_of_player_B_per_group = 2
 
 
 
