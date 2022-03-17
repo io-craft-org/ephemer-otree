@@ -182,11 +182,6 @@ page_sequence = [
     Questions_Page,
     Matrix1Page,
     Matrix2Page,
-    RepresentationsV2Page1,
-    RepresentationsV2Page2,
-    ImputationPage1,
-    ImputationPage2,
     IdentificationPage,
     MerciPage
 ]
-
