@@ -206,6 +206,10 @@ class Results(Page):
     def is_displayed(self):
         return self.round_number > 6
 
+    def before_next_page(self):
+        if self.round_number == Constants.num_rounds:
+            self.player.remuneration()
+
 
 class transition(Page):
     def before_next_page(self):
@@ -233,6 +237,11 @@ class Results_Final(Page):
         return self.participant.vars['my_page_timeout_seconds'] - time.time()
 
 
+class Fin(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+
 page_sequence = [
                 wait_allplayers,
                 P0_IDENTITE_SUJ,
@@ -248,6 +257,7 @@ page_sequence = [
                 WaitComputeDeclare,
                 Results_1,
                 Results,
-                transition,
-                Results_Final
+                # transition,
+                # Results_Final
+                Fin
                 ]
