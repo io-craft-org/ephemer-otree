@@ -32,7 +32,7 @@ doc = """
 class Constants(BaseConstants):
     name_in_url = 'evasion_FINAL_BIDEN'
     players_per_group = 5
-    num_rounds = 3
+    num_rounds = 12
 
     delai_page = 3000
     timeout_bot = 1
@@ -116,6 +116,10 @@ class Subsession(BaseSubsession):
 
             if p.ROLE != 'B':
                 p.B_CHOOSE_GROUPE = p.GROUP_ORIGIN
+
+            for s in range(1, 7):
+                if p.ROLE == 'B':
+                    p.in_round(s).B_CHOOSE_GROUPE = p.GROUP_ORIGIN
 
 
             for s in range(1, Constants.num_rounds + 1):
@@ -303,65 +307,115 @@ class Subsession(BaseSubsession):
     # ----------------------------------------------------------------------------------
     # MATRICES DES GROUPES EN FONCTION DES CHOIX DES JOUEURS C
     # ----------------------------------------------------------------------------------
-    def grouping_after_choose_groupe(self): 
-        vec_id_joueur = []   
-        players = []     
-        MAX_GROUPE = []   
-        vec_choose_groupe = []
-        new_structure = []
-        players = [p for p in self.get_players()]
-        groups = [g for g in self.get_groups()]
-     
-        MAX_GROUPE = int(len(players) / Constants.players_per_group)
-        
-        vec_choose_groupe = [p.B_CHOOSE_GROUPE for p in players]
-        vec_id_joueur = [[index + 1 for index, element in enumerate(vec_choose_groupe) if element == i] for i in range(1, MAX_GROUPE + 1 )]
-        new_structure = vec_id_joueur
-        
+    def grouping_after_choose_groupe(self):
+        if self.round_number > 6:
+            vec_id_joueur = []
+            players = []
+            MAX_GROUPE = []
+            vec_choose_groupe = []
+            new_structure = []
+            players = [p for p in self.get_players()]
+            groups = [g for g in self.get_groups()]
 
-        self.set_group_matrix(new_structure)
+            MAX_GROUPE = int(len(players) / Constants.players_per_group)
+
+            vec_choose_groupe = [p.B_CHOOSE_GROUPE for p in players]
+            vec_id_joueur = [[index + 1 for index, element in enumerate(vec_choose_groupe) if element == i] for i in range(1, MAX_GROUPE + 1 )]
+            new_structure = vec_id_joueur
 
 
-        for p in self.get_players():
-            p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B = len(new_structure[p.group.id_in_subsession - 1])
-            p.group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B = p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B - Constants.numb_of_players_non_B
-            
-                
-                
+            self.set_group_matrix(new_structure)
 
 
-        # application de la structure du groupe au round T jusqu'au round T+n
-        #for subsession in self.in_rounds(self.round_number, Constants.num_rounds):
-        #    subsession.group_like_round(self.round_number)
+            for p in self.get_players():
+                p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B = len(new_structure[p.group.id_in_subsession - 1])
+                p.group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B = p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B - Constants.numb_of_players_non_B
 
 
-        players = self.get_players()
 
-        for p in players:
-            if p.ROLE == 'A':
-                p.group.TX_IMPOSITION = p.A_TX_IMPOT
-                p.group.TX_REDISTRIBUTION = p.A_TX_REDISTRIB
-                p.group.A_TX_POUR_SOI_GPE = 100 - p.A_TX_REDISTRIB
 
-                # BIDEN : est-ce que la taxe imposée par A est en dessous de 15%
-                if p.group.TX_IMPOSITION <= Constants.SEUIL_BIDEN:
-                    p.group.BIDEN_IS_BELOW_QUINZE = 1
-                    p.group.DIFF_TX_IMPOT_BIDEN = Constants.SEUIL_BIDEN -  p.group.TX_IMPOSITION
-                   
+
+            # application de la structure du groupe au round T jusqu'au round T+n
+            #for subsession in self.in_rounds(self.round_number, Constants.num_rounds):
+            #    subsession.group_like_round(self.round_number)
+
+
+            players = self.get_players()
+
+            for p in players:
+                if p.ROLE == 'A':
+                    p.group.TX_IMPOSITION = p.A_TX_IMPOT
+                    p.group.TX_REDISTRIBUTION = p.A_TX_REDISTRIB
+                    p.group.A_TX_POUR_SOI_GPE = 100 - p.A_TX_REDISTRIB
+
+                    # BIDEN : est-ce que la taxe imposée par A est en dessous de 15%
+                    if p.group.TX_IMPOSITION <= Constants.SEUIL_BIDEN:
+                        p.group.BIDEN_IS_BELOW_QUINZE = 1
+                        p.group.DIFF_TX_IMPOT_BIDEN = Constants.SEUIL_BIDEN -  p.group.TX_IMPOSITION
+
+                    else:
+                        p.group.BIDEN_IS_BELOW_QUINZE = 0
+                        p.group.DIFF_TX_IMPOT_BIDEN = 0
+
                 else:
-                    p.group.BIDEN_IS_BELOW_QUINZE = 0
-                    p.group.DIFF_TX_IMPOT_BIDEN = 0
 
-            else:
-                
-                pass
+                    pass
 
-        for p in players:
-            p.DIFF_TAUX = p.TX_ORIGIN - p.group.TX_IMPOSITION 
+            for p in players:
+                p.DIFF_TAUX = p.TX_ORIGIN - p.group.TX_IMPOSITION
+        else:
+            vec_id_joueur = []
+            players = []
+            MAX_GROUPE = []
+            vec_choose_groupe = []
+            new_structure = []
+            players = [p for p in self.get_players()]
+            groups = [g for g in self.get_groups()]
 
-            
+            MAX_GROUPE = int(len(players) / Constants.players_per_group)
 
-#############################################################################################
+            vec_choose_groupe = [p.B_CHOOSE_GROUPE for p in players]
+            vec_id_joueur = [[index + 1 for index, element in enumerate(vec_choose_groupe) if element == i] for i in
+                             range(1, MAX_GROUPE + 1)]
+            new_structure = vec_id_joueur
+
+            self.set_group_matrix(new_structure)
+
+            for p in self.get_players():
+                p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B = len(new_structure[p.group.id_in_subsession - 1])
+                p.group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B = p.group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B - Constants.numb_of_players_non_B
+
+            # application de la structure du groupe au round T jusqu'au round T+n
+            # for subsession in self.in_rounds(self.round_number, Constants.num_rounds):
+            #    subsession.group_like_round(self.round_number)
+
+            players = self.get_players()
+
+            for p in players:
+                if p.ROLE == 'A':
+                    p.group.TX_IMPOSITION = p.A_TX_IMPOT
+                    p.group.TX_REDISTRIBUTION = p.A_TX_REDISTRIB
+                    p.group.A_TX_POUR_SOI_GPE = 100 - p.A_TX_REDISTRIB
+
+                    # BIDEN : est-ce que la taxe imposée par A est en dessous de 20%
+                    if p.group.TX_IMPOSITION <= Constants.SEUIL_BIDEN:
+                        p.group.BIDEN_IS_BELOW_QUINZE = 1
+                        p.group.DIFF_TX_IMPOT_BIDEN = Constants.SEUIL_BIDEN - p.group.TX_IMPOSITION
+
+                    else:
+                        p.group.BIDEN_IS_BELOW_QUINZE = 0
+                        p.group.DIFF_TX_IMPOT_BIDEN = 0
+
+                else:
+
+                    pass
+
+            for p in players:
+                p.DIFF_TAUX = p.TX_ORIGIN - p.group.TX_IMPOSITION
+
+
+
+            #############################################################################################
 #############################################################################################
     # -----------------------------------------------------------------------
     # GROUPE

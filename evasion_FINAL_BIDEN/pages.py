@@ -13,6 +13,70 @@ class wait_allplayers(WaitPage):
     body_text = "Salle d'attente : veuillez patienter, nous attendons que tous les joueurs arrivent."
 
 
+# -------------- PAGES POUR LES ROUNDS 1 À 6 ---------------------------
+
+class P1_ROLE_1(Page):
+    def vars_for_template(self):
+        self.player.group_name_individu()
+        self.player.timeout_for_bots()
+        self.player.bot_or_pas_bot_all_game()
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['my_page_timeout_seconds'] - time.time()
+
+    def is_displayed(self):
+        return self.round_number < 7
+
+
+
+class P2_TX_IMPOT_1(Page):
+    form_model = 'player'
+    form_fields = ['A_TX_IMPOT', 'A_TX_REDISTRIB']
+
+    def before_next_page(self):
+        self.player.bot_or_pas_bot_tx_impot()
+        self.group.taxation()
+
+    def is_displayed(self):
+        return self.player.ROLE == 'A' and self.round_number < 7
+
+    def vars_for_template(self):
+        self.player.timeout_for_bots()
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['my_page_timeout_seconds'] - time.time()
+
+
+class P3_DECLARATION_1(Page):
+    form_model = 'player'
+    form_fields = ['DECLARATION']
+
+    def is_displayed(self):
+        return self.player.ROLE != 'A' and self.round_number < 7
+
+    def vars_for_template(self):
+        self.player.timeout_for_bots()
+
+    def before_next_page(self):
+        self.player.bot_or_pas_bot_declaration()
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['my_page_timeout_seconds'] - time.time()
+
+
+class Results_1(Page):
+    def vars_for_template(self):
+        self.player.timeout_for_bots()
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['my_page_timeout_seconds'] - time.time()
+
+    def is_displayed(self):
+        return self.round_number < 7
+
+
+# -------------- PAGES POUR LES ROUNDS 7 À 12 ---------------------------
+
 # ETES VOUS UN ROBOT ???
 class P0_IDENTITE_SUJ(Page):
     timeout_seconds  = Constants.delai_page
@@ -33,6 +97,9 @@ class P1_ROLE(Page):
     def get_timeout_seconds(self):    
         return self.participant.vars['my_page_timeout_seconds'] - time.time()
 
+    def is_displayed(self):
+        return self.round_number > 6
+
 
 
 class P2_TX_IMPOT(Page):
@@ -44,7 +111,7 @@ class P2_TX_IMPOT(Page):
         self.group.taxation()
 
     def is_displayed(self):
-        return self.player.ROLE == 'A'
+        return self.player.ROLE == 'A' and self.round_number > 6
 
     def vars_for_template(self):
         self.player.timeout_for_bots()
@@ -54,10 +121,14 @@ class P2_TX_IMPOT(Page):
 
 
 
-
+# virée ?
 class A_B_and_C_Wait_for_A(WaitPage):
     wait_for_all_groups = True
     body_text = "Salle d'attente : Attendez que les joueurs A aient décidé du taux d'imposition entre 0% et 50% et du taux de redistribution entre 0% et 100%"
+
+    def is_displayed(self):
+        return self.round_number > 6
+
 
  
 
@@ -72,7 +143,7 @@ class B_CAN_CHANGE(Page):
         
 
     def is_displayed(self):
-        return self.player.ROLE == 'B'
+        return self.player.ROLE == 'B' and self.round_number > 6
 
     def vars_for_template(self):
         self.player.timeout_for_bots()
@@ -97,7 +168,7 @@ class P3_DECLARATION(Page):
     form_fields = ['DECLARATION']
 
     def is_displayed(self):
-        return self.player.ROLE != 'A'
+        return self.player.ROLE != 'A' and self.round_number > 6
 
     def vars_for_template(self):
         self.player.timeout_for_bots()
@@ -132,6 +203,9 @@ class Results(Page):
     def get_timeout_seconds(self):    
         return self.participant.vars['my_page_timeout_seconds'] - time.time()
 
+    def is_displayed(self):
+        return self.round_number > 6
+
 
 class transition(Page):
     def before_next_page(self):
@@ -162,13 +236,17 @@ class Results_Final(Page):
 page_sequence = [
                 wait_allplayers,
                 P0_IDENTITE_SUJ,
-                P1_ROLE, 
+                P1_ROLE_1,
+                P1_ROLE,
+                P2_TX_IMPOT_1,
                 P2_TX_IMPOT,
                 A_B_and_C_Wait_for_A,
                 B_CAN_CHANGE,
                 GROUPING,
+                P3_DECLARATION_1,
                 P3_DECLARATION,
-                WaitComputeDeclare, 
+                WaitComputeDeclare,
+                Results_1,
                 Results,
                 transition,
                 Results_Final

@@ -1,0 +1,322 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'evasion_FINAL_BIDEN/evasion_FINAL_BIDEN_style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+<center> <strong>  TOUR {{subsession.round_number}} - Déclaration </strong> </center>
+{% endblock %}
+
+{% block content %}
+
+<div class="cadre">
+
+    <div style="color: green; font-weight: bold; margin-bottom: 1%; font-size: 18px;">
+        INFORMATIONS : 
+    </div>
+
+<table style="width: 100%; border: 5px solid black; font-size: 17px;">
+    <tr>
+        <td class="td_titre" >
+            Votre rôle est :       
+        </td>
+
+        <td class="td_reponse" >
+            <center>
+                {% if player.ROLE == 'A' %}
+                    <img  src="{% static 'evasion_FINAL_BIDEN/roleA.png' %}" heigth=15% width=15%/> 
+                {% elif player.ROLE == 'B' %}
+                    <img   src="{% static 'evasion_FINAL_BIDEN/roleB.png' %}" heigth=15% width=15%/> 
+                {% elif player.ROLE == 'C' %}
+                    <img  src="{% static 'evasion_FINAL_BIDEN/roleC.png' %}" heigth=15% width=15%/> 
+                {% endif %}
+            </center>
+        </td>
+    </tr>
+
+    
+   
+
+    <td class="td_titre" >
+
+            Vous faites partie du groupe :
+    </td>
+
+    <td class="td_reponse" >
+        <center>
+            {% if player.GROUP_NAME_PARTICIPANT == 'bleu' %}
+            bleu
+                <img  src="{% static 'evasion_FINAL_BIDEN/bleu.png' %}" heigth=35% width=35%/>   
+
+            {% elif player.GROUP_NAME_PARTICIPANT == 'vert' %}
+            vert
+                <img  src="{% static 'evasion_FINAL_BIDEN/vert.png' %}" heigth=35% width=35%/>  
+
+            {% elif player.GROUP_NAME_PARTICIPANT == 'rouge' %}
+            rouge
+                <img  src="{% static 'evasion_FINAL_BIDEN/rouge.png' %}" heigth=35% width=35%/> 
+
+            {% elif player.GROUP_NAME_PARTICIPANT == 'noir' %}
+            noir
+                <img  src="{% static 'evasion_FINAL_BIDEN/noir.png' %}" heigth=35% width=35%/> 
+
+            {% elif player.GROUP_NAME_PARTICIPANT == 'violet' %}
+            violet
+                <img  src="{% static 'evasion_FINAL_BIDEN/violet.png' %}" heigth=35% width=35%/>  
+
+            {% elif player.GROUP_NAME_PARTICIPANT == 'jaune' %}
+            jaune
+                <img  src="{% static 'evasion_FINAL_BIDEN/jaune.png' %}" heigth=35% width=35%/> 
+
+            {% endif %}
+        </center>
+        
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+{% if player.ROLE != 'A' %}
+<tr>
+    <td class="td_titre" >
+        Votre revenu initial pour ce tour est de :
+    </td>
+
+    <td class="td_reponse" >
+        <strong style="color:red;"> {{ player.REVENU_INITIAL }} ECU </strong> <br>       
+    </td>
+</tr>
+{% endif %}
+
+
+<tr>
+    <td class="td_titre">
+        Le nombre de joueurs dans votre groupe est  de : 
+    </td>
+
+    <td class="td_reponse" >
+            <strong> {{group.NUMB_PLAYER_PER_GROUP_AFTER_CHOICE_B}} joueurs </strong> 
+    </td>
+</tr>
+
+
+<tr>
+
+    <td class="td_titre">
+        Ce groupe est  composé de : 
+    </td>
+
+    <td class="td_reponse" >
+            1 joueur A <br>
+            {% if group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B <= 1 %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueur B {% else %} {{group.NUMB_B_PLAYER_PER_AFTER_CHOICE_B}} joueurs B {% endif %}  <br>
+            {{Constants.numb_of_player_C_per_group}} joueurs C 
+    </td>
+</tr>
+
+<tr style=" border: 0px;">
+    <td colspan = 2 style="height:10px; border: 0px; background-color: black;">
+    </td>
+</tr>
+
+
+
+<tr>
+    <td class="td_titre">
+        Le total des fonds collectés sera multiplié par : 
+    </td>
+
+    <td class="td_reponse_fix" >
+       {{ Constants.multiplier }} 
+    </td>
+</tr>
+
+<tr>
+    <td class="td_titre">
+        Chaque joueur B et C de votre groupe a reçu un revenu initial entre : 
+    </td>
+
+    <td class="td_reponse_fix" >
+        {{Constants.min_income}} ECU et {{Constants.max_income}} ECU
+    </td>
+</tr>
+
+
+</table>
+
+<br>
+
+<div style="color: green; font-weight: bold; margin-bottom: 1%; font-size: 18px;">
+    VOS ACTIONS : 
+</div>
+
+<div class= "question">
+
+
+    <table class="table_impot">
+        <tr style = "background-color: lightgray;">
+            <td class="td_cell">
+                GROUPE
+            </td>
+            
+            <td class="td_cell">
+                
+            </td>
+            <td class="td_cell">
+                TAUX D'IMPOSITION
+            </td>
+            <td class="td_cell">
+                TAUX DE REDISTRIBUTION
+            </td>
+        </tr>
+
+
+
+
+        <tr>
+            <td class="td_cell_rep ">
+                Votre groupe
+            </td>
+
+           
+            <td class="td_cell_rep "  >
+                {{ player.GROUP_NAME_PARTICIPANT_ORIGIN }} 
+                <center>
+                    {% if player.GROUP_NAME_PARTICIPANT_ORIGIN == 'bleu' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/bleu.png' %}" heigth=35% width=35%/>   
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN == 'vert' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/vert.png' %}" heigth=35% width=35%/>  
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN == 'rouge' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/rouge.png' %}" heigth=35% width=35%/> 
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN == 'noir' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/noir.png' %}" heigth=35% width=35%/> 
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN == 'violet' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/violet.png' %}" heigth=35% width=35%/>  
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT_ORIGIN == 'jaune' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/jaune.png' %}" heigth=35% width=35%/> 
+        
+                    {% endif %}
+                </center>
+            </td>
+            <td class="td_cell_rep ">
+                {{ player.TX_ORIGIN }}%
+            </td>
+            <td class="td_cell_rep ">
+                {{ player.TX_REDISTRIB_ORIGIN }}%
+            </td>
+            
+        </tr>
+
+        {% if player.ROLE == 'B' %}
+
+        {% if player.GROUP_NAME_PARTICIPANT_ORIGIN != player.GROUP_NAME_PARTICIPANT %}
+
+        <tr>
+
+            <td class="td_cell_rep ">
+                Votre groupe actuel
+            </td>
+
+           
+            <td class="td_cell_rep "  >
+                 {{ player.GROUP_NAME_PARTICIPANT }} 
+                <center>
+                    {% if player.GROUP_NAME_PARTICIPANT == 'bleu' %}
+                   
+                        <img  src="{% static 'evasion_FINAL_BIDEN/bleu.png' %}" heigth=35% width=35%/>   
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT == 'vert' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/vert.png' %}" heigth=35% width=35%/>  
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT == 'rouge' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/rouge.png' %}" heigth=35% width=35%/> 
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT == 'noir' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/noir.png' %}" heigth=35% width=35%/> 
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT == 'violet' %}
+                        <img  src="{% static 'evasion_FINAL_BIDEN/violet.png' %}" heigth=35% width=35%/>  
+        
+                    {% elif player.GROUP_NAME_PARTICIPANT == 'jaune' %}
+                    
+                        <img  src="{% static 'evasion_FINAL_BIDEN/jaune.png' %}" heigth=35% width=35%/> 
+        
+                    {% endif %}
+                </center>
+            </td>
+            <td class="td_cell_rep ">
+                {{group.TX_IMPOSITION}}%
+            </td>
+            <td class="td_cell_rep ">
+                {{ group.TX_REDISTRIBUTION }}%
+            </td>
+            
+        </tr>
+
+        {% endif %}
+        {% endif %}
+
+    </table>
+   
+   
+    
+
+    {% if player.ROLE == 'B' and player.GROUP_NAME_PARTICIPANT_ORIGIN != player.GROUP_NAME_PARTICIPANT %}
+
+   
+      
+  
+
+    {% endif %}
+
+    <br>
+
+   <span style="color:green;"> Veuillez maintenant déclarer votre revenu initial: </span>
+</div>
+
+    <div class="reponse" style="padding-bottom: 0%; margin-bottom:0px;">
+        <B> Votre déclaration :</B> <br>
+        {% if player.ROLE != 'A' %}
+        Votre revenu initial pour ce tour est de :
+        <strong style="color:red;"> {{ player.REVENU_INITIAL }} ECU </strong> <br>       
+        {% endif %}
+        
+        {% formfield player.DECLARATION %} <br>
+        
+       
+    </div>
+
+    <div style="font-size: 15px; font-style:italic; padding-top: 1%; color: red;">
+        Votre déclaration a une chance sur dix d'être contrôlée. Si vous êtes contrôlé et que votre déclaration est inférieure à 
+        vos revenus, vous devrez payer, en plus des impôts sur les revenus déclarés, 3 fois la différence 
+        entre vos revenus réels et le montant déclaré multiplié par le taux d'imposition.
+    </div>
+
+</div>
+
+
+</div>
+
+
+    <div class="boutton">
+        <button class="suivant_btn"> SUIVANT </button>
+    </div>
+
+{% endblock %}
+
+
