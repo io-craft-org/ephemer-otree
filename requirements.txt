@@ -1,2 +1,2 @@
 -e git+https://github.com/io-craft-org/otree-core.git#egg=otree
-# psycopg2>=2.8.4
+psycopg2>=2.8.4
