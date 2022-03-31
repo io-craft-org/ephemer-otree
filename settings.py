@@ -66,4 +66,4 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ """
 
-SECRET_KEY = '1495337653867'
+SECRET_KEY = '1495337653867'  # Valeur requise mais pas utilisée dans le contexte de la plateforme Ephemer
